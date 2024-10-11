@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -10,8 +11,8 @@ class AppointmentController extends Controller
 {
     // function 
     public function contact(){
-
-        return view('contact');
+        $doctors = Doctor::all();
+        return view('contact',compact('doctors'));
     }
 
     public function  addappointment(Request $request){
@@ -23,6 +24,8 @@ class AppointmentController extends Controller
             'services' => 'required|string',
             'msg'=> 'nullable|string',
         ]);
+
+        // dd($request);
         // Appointment::create([
         //     'name' => $request->input('name'),
         //     'email' => $request->input('email'),
@@ -35,6 +38,11 @@ class AppointmentController extends Controller
         
         return redirect()->back()->with('success','Appoinment booked successfully !');
         dd($request);
+    }
+
+    public function SelectAppointment(){
+       $appointments =  Appointment::all();
+       return view('viewappointment',compact('appointments'));
     }
 
 }

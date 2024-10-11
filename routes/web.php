@@ -62,6 +62,9 @@ Route::group(['prefix' => 'account'], function () {
         Route::post('/storedoctor', [DoctorController::class, 'store'])->name('storedoctor');
         Route::delete('/delete_doctor/{doctor}',[DoctorController::class, 'deleteDoctor'])->name('deletedoctor');
 
+        Route::get('/appointment', [AppointmentController::class, 'SelectAppointment'])->name('SelectAppointment');
+
+
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     });
     

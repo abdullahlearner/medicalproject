@@ -98,19 +98,18 @@
                            </div>
                       </div>
                       <div class=" col-md-12 col-12">
-                         <div class="rr-form-input-box pb-30">
-                            <select style="display: none;" name="services">
-                               <option >Choose Service</option>
-                               <option value="Medicine"  >Medicine &amp; Health</option>
-                               <option value="Economical Choice">Economical Choice</option>
-                               <option value="Team Of Support">Team Of Support</option>
-                               <option value="Test Laboratory">Test Laboratory</option>
+                        <div class="rr-form-input-box pb-30">
+                            <select name="services">
+                                <option>Choose Doctor</option>
+                                @foreach($doctors as $doctor)
+                                    <option value="{{ $doctor->name }}">{{ $doctor->name }}</option>
+                                @endforeach
                             </select>
-                         </div>
-                         @error('services')
-                         <div class="text-danger">{{ $message }}</div>
-                         @enderror
-                      </div>
+                        </div>
+                        @error('services')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
                       <div class="col-12 mb-20">
                          <div class="rr-form-textarea-box">
                             <textarea placeholder="Your meassage"  name="msg">{{ old('msg') }}</textarea>
